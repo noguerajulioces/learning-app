@@ -1,0 +1,32 @@
+.jumbotron
+  What do you want to learn?
+
+.card
+  .col
+    = @courses.count
+    online courses
+  .col
+    = @courses.count
+    online courses
+  .col
+    = @courses.count
+    online courses
+  .col
+    = @courses.count
+    online courses
+
+%hr
+%h2 Popular courses
+.row.row-cols-1.row-cols-md-3.g-4
+  - @courses.each do |course|
+    = render 'courses/course', course: course
+%hr
+%h2 Top rated courses
+.row.row-cols-1.row-cols-md-3.g-4
+  - @courses.each do |course|
+    = render 'courses/course', course: course
+%hr
+%h2 Most recent courses
+.row.row-cols-1.row-cols-md-3.g-4
+  - @courses.each do |course|
+    = render 'courses/course', course: course
