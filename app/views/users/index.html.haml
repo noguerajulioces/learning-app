@@ -1,3 +1,49 @@
-.card
-  - @users.each do |user|
-    = render 'users/user', user: user
+-# .card
+-#   - @users.each do |user|
+-#     = render 'users/user', user: user
+
+= search_form_for @q do |f|
+  = f.search_field :email_cont
+  = f.submit 'Search'
+
+= link_to users_path, class: 'btn btn-sm btn-secondary' do 
+  .fa.fa-sync
+
+%table.table.table-bordered
+  %thead
+    %tr
+      %th
+        = sort_link(@q, :email)
+      %th
+        = sort_link(@q, :created_at)
+      %th
+        Updated At
+      %th
+        Sign in count
+      %th
+        Last sign in at
+      %th
+        Current sign in at
+      %th
+        Current sign in ip
+      %th
+        Last sign in ip
+  %tbody
+    - @users.each do |user|
+      %tr
+        %td
+          = user.email
+        %td
+          = user.created_at
+        %td
+          = user.updated_at
+        %td
+          = user.sign_in_count
+        %th
+          = user.last_sign_in_at
+        %th
+          = user.current_sign_in_at
+        %th
+          = user.current_sign_in_ip
+        %th
+          = user.last_sign_in_ip
