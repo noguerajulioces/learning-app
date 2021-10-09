@@ -23,5 +23,5 @@ class Course < ApplicationRecord
   ].freeze
 
   include PublicActivity::Model
-  tracked owner: Proc.new { |controller, _model| controller.current_user }
+  tracked owner: proc { |controller, _model| controller.current_user }
 end

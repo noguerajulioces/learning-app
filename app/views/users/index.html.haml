@@ -24,6 +24,8 @@
         Current sign in ip
       %th
         Last sign in ip
+      %th
+        Roles
   %tbody
     - @users.each do |user|
       %tr
@@ -35,11 +37,14 @@
           = user.updated_at
         %td
           = user.sign_in_count
-        %th
+        %td
           = user.last_sign_in_at
-        %th
+        %td
           = user.current_sign_in_at
-        %th
+        %td
           = user.current_sign_in_ip
-        %th
+        %td
           = user.last_sign_in_ip
+        %td
+          - user.roles.each do |role|
+            %span.badge.bg-primary= role.name
