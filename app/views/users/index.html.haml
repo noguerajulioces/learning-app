@@ -27,6 +27,8 @@
       %th
         Roles
       %th
+        Online?
+      %th
   %tbody
     - @users.each do |user|
       %tr
@@ -49,5 +51,10 @@
         %td
           - user.roles.each do |role|
             %span.badge.bg-primary= role.name
+        %td
+          - if user.online?
+            .fa.fa-circle.text-success
+          - else
+            .fa.fa-circle.text-danger
         %td
           = link_to 'Edit', edit_user_path(user)
