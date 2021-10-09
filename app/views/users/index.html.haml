@@ -26,6 +26,7 @@
         Last sign in ip
       %th
         Roles
+      %th
   %tbody
     - @users.each do |user|
       %tr
@@ -48,3 +49,5 @@
         %td
           - user.roles.each do |role|
             %span.badge.bg-primary= role.name
+        %td
+          = link_to 'Edit', edit_user_path(user)
