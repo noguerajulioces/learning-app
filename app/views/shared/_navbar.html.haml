@@ -29,6 +29,10 @@
             = link_to users_path, class: 'nav-link' do
               .fas.fa-user
               Users
+          %li.nav-item{class: "#{'active font-weight-bold' if current_page?(home_activity_path)}"}
+            = link_to home_activity_path, class: 'nav-link' do
+              .fas.fa-bell
+              Activity
         %form.d-flex
           = form_tag(courses_path, method: :get) do
             .input-group
