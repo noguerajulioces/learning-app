@@ -21,4 +21,6 @@ class Course < ApplicationRecord
   LANGUAGE = [
     'Spanish', 'English', 'Russian', 'Portuguese'
   ].freeze
+
+  include PublicActivity::Model
 end
