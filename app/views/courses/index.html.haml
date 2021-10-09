@@ -2,6 +2,22 @@
   Courses:
   = @courses.count
 
-.row.row-cols-1.row-cols-md-3.g-4
-  - @courses.each do |course|
-    = render 'courses/course', course: course
+.row
+  .col-3
+    = search_form_for @q do |f|
+      = f.label :title
+      = f.search_field :title_cont, class: 'form-control'
+      = f.label :level
+      = f.select :level_cont, Course::LEVELS, { include_blank: true }, {class: "form-select"}
+      = f.label :language
+      = f.select :language_cont, Course::LANGUAGE, { include_blank: true }, {class: "form-select"}
+      = f.label :price
+      = f.range_field :price_eq, :in => 0..100, oninput: "this.nextElementSibling.value = this.value", class: 'form-range'
+      = f.submit 'Search'
+
+    = link_to courses_path, class: 'btn btn-sm btn-secondary' do 
+      .fa.fa-sync
+  .col-9
+    .row.row-cols-1.row-cols-md-3.g-4
+      - @courses.each do |course|
+        = render 'courses/course', course: course
