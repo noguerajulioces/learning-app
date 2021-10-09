@@ -1,5 +1,5 @@
 class Course < ApplicationRecord
-    validates :title, presence: true
+    validates :title, :short_description, :language, :price, :level, presence: true
     validates :description, presence: true, length: {minimum:10}
    
     belongs_to :user
@@ -11,4 +11,12 @@ class Course < ApplicationRecord
 
     extend FriendlyId
     friendly_id :title, use: :slugged
+
+    LEVELS = [
+        'Beginner', 'Intermediate', 'Advanced'
+    ].freeze
+
+    LANGUAGE = [
+        'Spanish', 'English', 'Russian', 'Portuguese'
+    ]
 end
